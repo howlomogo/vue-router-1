@@ -1,10 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import About from '../views/About.vue'
+import Nested from '../views/Nested.vue'
 import User from '../views/User.vue'
 import Query from '../views/Query.vue'
 import NotFound from '../views/NotFound.vue'
+
+import Info from '../components/Info'
+import Profile from '../components/Profile'
+import NamedViews from '../views/NamedViews'
+import PropsView from '../views/PropsView'
 
 Vue.use(VueRouter)
 
@@ -15,9 +20,31 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About
+    // You could also use for example something like
+    // path: '/nested/:id' will do the same with /nested/36/nestedInfo etc
+    path: '/nested',
+    children: [
+      {
+        /* Note that nested paths that start with / will be treated
+        as a root path. This allows you to leverage the component
+        nesting without having to use a nested URL.
+        */
+        path: '/nestedInfo',
+        component: Info
+      },
+      {
+        path: 'nestedProfile',
+        component: Profile
+      },
+      {
+        /* You can (But don't need to) have a default view incase
+        the path is just /nested and want to render ALL the views within the
+        router-view */
+        path: '',
+        component: Home
+      }
+    ],
+    component: Nested
   },
   {
     path: '/user',
@@ -39,6 +66,31 @@ const routes = [
     component: Query
   },
   {
+    // Get name as props, means we can decouple this component from specific routes
+    path: '/props-view/:name',
+    component: PropsView,
+    props: true
+  },
+  {
+    path: '/named',
+    component: NamedViews,
+    children: [{
+      path: '',
+      components: {
+        default: Profile,
+        a: Info,
+        b: Profile
+      }
+    }]
+  },
+  {
+    // Here for example '/path-with-an-alias' may be a horrible url we can't change,
+    // we can just link to any url by using alias, this is NOT redirecting
+    path: '/path-with-an-alias',
+    component: Home,
+    alias: '/a-really-cool-url'
+  },
+  {
     // With a url of /anycheese - $route.params.pathMatch is "cheese"
     path: '/any*',
     component: Home
@@ -50,7 +102,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'history', // default is hash mode
   base: process.env.BASE_URL,
   routes
 })

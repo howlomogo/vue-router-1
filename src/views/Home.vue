@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <h1>This is an home page</h1>
-    <hr />
+    <p v-if="$route.path === '/nested'">
+      This is the child default (nested view) using Home component from /nested
+    </p>
     <button @click="logRouterInfo">Log Router Info</button>
   </div>
 </template>
