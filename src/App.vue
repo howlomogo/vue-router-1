@@ -66,6 +66,10 @@
       <router-link to="/a-really-cool-url">Alias</router-link>
     </div>
 
+    <div class="nav">
+      <router-link to="/fetch-data-after">Fetch Data After</router-link>
+    </div>
+
     <!-- component matched by the route will render here -->
     <router-view/>
     <!-- component matched by the route will render here -->

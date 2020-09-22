@@ -10,6 +10,7 @@ import Info from '../components/Info'
 import Profile from '../components/Profile'
 import NamedViews from '../views/NamedViews'
 import PropsView from '../views/PropsView'
+import DataFetchAfter from '../views/DataFetchAfter'
 
 Vue.use(VueRouter)
 
@@ -54,6 +55,10 @@ const routes = [
     // '/user' will NOT display this component unless stated as above
     path: '/user/:id',
     component: User
+  },
+  {
+    path: '/fetch-data-after',
+    component: DataFetchAfter
   },
   {
     // You can have multiple dynamic segments in the same route

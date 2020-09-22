@@ -371,3 +371,32 @@ The Full Navigation Resolution Flow
 - Call global afterEach hooks.
 - DOM updates triggered.
 - Call callbacks passed to next in beforeRouteEnter guards with instantiated instances.
+
+Route Meta Fields
+https://router.vuejs.org/guide/advanced/meta.html
+
+Route Transitions
+https://router.vuejs.org/guide/advanced/transitions.html#transitions
+
+Data Fetching
+Sometimes you need to fetch data from the server when a route is activated. For example, before rendering a user profile, you need to fetch the user's data from the server. We can achieve this in two different ways:
+
+Fetching After Navigation: perform the navigation first, and fetch data in the incoming component's lifecycle hook. Display a loading state while data is being fetched.
+
+Fetching Before Navigation: Fetch data before navigation in the route enter guard, and perform the navigation after data has been fetched.
+
+Technically, both are valid choices - it ultimately depends on the user experience you are aiming for.
+
+Fetching data after navigation can be done in the created lifecycle hook. created
+
+Example on fetching data: https://router.vuejs.org/guide/advanced/data-fetching.html
+
+Scroll Behaviour for routes
+https://router.vuejs.org/guide/advanced/scroll-behavior.html#scroll-behavior
+
+Lazy Loading Routes:
+Spliting each route's components into a separate chunk, and only load them when the route is visited.
+https://router.vuejs.org/guide/advanced/lazy-loading.html#lazy-loading-routes
+
+Navigation Failures
+https://router.vuejs.org/guide/advanced/navigation-failures.html#navigation-failures
