@@ -4,7 +4,7 @@
     <p v-if="$route.path === '/nested'">
       This is the child default (nested view) using Home component from /nested
     </p>
-    <p>Testing buddy push 2</p>
+    <p>Testing buddy push 3</p>
     <button @click="logRouterInfo">Log Router Info</button>
   </div>
 </template>
